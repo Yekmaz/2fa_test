@@ -1,21 +1,28 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import Login from "./Login";
-import Register from "./Register";
-import Setup2FA from "./Setup2FA";
-import Dashboard from "./assets/Dashboard";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Setup2FA from "./components/Setup2FA";
+import Dashboard from "./components/Dashboard";
+
+import GlobalStyles from "./styles/GlobalStyles";
+import TwoFAInputForm from "./components/TwoFAInputForm";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Navigate replace to="login" />} />
-        <Route path="login" element={<Login />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="setup2fa" element={<Setup2FA />} />
-        <Route path="register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <GlobalStyles />
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Navigate replace to="login" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="2fa-check" element={<TwoFAInputForm />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="setup2fa" element={<Setup2FA />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 

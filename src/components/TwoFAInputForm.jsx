@@ -8,7 +8,7 @@ import Form from "./ui/Form";
 import Button from "./ui/Button";
 import styled from "styled-components";
 
-const LoginLayout = styled.main`
+const FormLayout = styled.main`
   min-height: 100vh;
   min-width: 100vw;
   display: grid;
@@ -29,7 +29,6 @@ function TwoFAInputForm() {
   const handleCheck2fa = async (e) => {
     e.preventDefault();
     const storedData = JSON.parse(localStorage.getItem("userToken"));
-    console.log("🚀 ~ handleCheck2fa ~ storedData:", storedData.token);
     const config = {
       headers: { Authorization: `Bearer ${storedData.token}` },
     };
@@ -42,7 +41,6 @@ function TwoFAInputForm() {
         },
         config
       );
-      console.log("🚀 ~ handleCheck2fa ~ response:", response);
       navigate("/dashboard");
     } catch (err) {
       console.error(err);
@@ -50,7 +48,7 @@ function TwoFAInputForm() {
   };
 
   return (
-    <LoginLayout>
+    <FormLayout>
       <Form onSubmit={handleCheck2fa}>
         <FormRowVertical label="2FA Token">
           <Input
@@ -66,7 +64,7 @@ function TwoFAInputForm() {
           </Button>
         </FormRowVertical>
       </Form>
-    </LoginLayout>
+    </FormLayout>
   );
 }
 

@@ -1,3 +1,6 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+}
+body {
+  background-color: bisque;
 }

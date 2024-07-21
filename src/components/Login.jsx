@@ -35,13 +35,16 @@ const Login = () => {
         username,
         password,
       });
-      console.log("🚀 ~ handleLogin ~ response:", response.data.token);
+      console.log("🚀 ~ handleLogin ~ response:", response.data.is2FAEnabled);
       localStorage.setItem(
         "userToken",
         JSON.stringify({ token: response.data.token })
       );
+
+      localStorage.setItem("userId", JSON.stringify({ id: response.data.id }));
       // handle success, e.g., save token, redirect
-      navigate("/2fa-check");
+      if (response.data.is2FAEnabled) navigate("/2fa-check");
+      else navigate("/setup2fa");
     } catch (err) {
       console.error(err);
     }

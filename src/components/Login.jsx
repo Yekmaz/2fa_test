@@ -35,7 +35,7 @@ const Login = () => {
         username,
         password,
       });
-      console.log("🚀 ~ handleLogin ~ response:", response.data.is2FAEnabled);
+
       localStorage.setItem(
         "userToken",
         JSON.stringify({ token: response.data.token })
@@ -44,7 +44,7 @@ const Login = () => {
       localStorage.setItem("userId", JSON.stringify({ id: response.data.id }));
       // handle success, e.g., save token, redirect
       if (response.data.is2FAEnabled) navigate("/2fa-check");
-      else navigate("/setup2fa");
+      else navigate("/dashboard");
     } catch (err) {
       console.error(err);
     }

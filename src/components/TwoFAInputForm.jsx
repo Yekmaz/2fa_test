@@ -43,6 +43,7 @@ function TwoFAInputForm() {
         "http://localhost:8443/api/check-2fa",
         {
           token,
+          enable: is2FAEnabled,
         },
         config
       );
